@@ -1,4 +1,4 @@
-# torch.autograd.gradの引数についての説明
+# [torch.autograd.grad](https://pytorch.org/docs/stable/generated/torch.autograd.grad.html)の引数についての説明
 引数を以下の4つに分けて説明する.
 
 - a scalar
