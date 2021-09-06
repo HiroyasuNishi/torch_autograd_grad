@@ -9,8 +9,8 @@
 
 
 ## 基本的に
-grad = torch.autograd.grad(outputs, inputs, grad_outputs)とする
-grad_outputsとoutputsのtensors or scalarsのshapeと個数は基本的に同じ.
+grad = torch.autograd.grad(outputs, inputs, grad_outputs)とする.  
+grad_outputsとoutputsのtensors or scalarsのshapeと個数は基本的に同じ.  
 gradのtensors or scalarsのshapeと個数は基本的にinputsと同じ. inputsがa tensorの場合は、gradは要素が1つのtuple
 つまり、outputsとgrad_outputsが対応していて、inputsとgradが対応している.
 
@@ -42,7 +42,7 @@ y_grad = torch.autograd.grad(y, a)
 print(y_grad)
 ```
 
-### case 1-1-2. outputs: a scalar. inputs: a tensor. grad_outputs: a scalar (with the same shape and the same number of tensor or scalar as outputs) (outputsとtensor or scalarのshapeと個数が同じ.)
+### case 1-1-2. outputs: a scalar. inputs: a tensor. grad_outputs: a scalar (with the same shape and the same number of tensor or scalar as outputs) (outputsとtensors or scalarsのshapeと個数が同じ.)
 autograd.grad(y, a, grad_outputs=v)の計算  
 -> (∂y/∂a * v, )
 
@@ -83,8 +83,8 @@ print(y_grad)
 
 ### case 2-1-2. outputs: scalars. inputs: a tensor. grad_outputs: scalars
 autograd.grad((y1, y2), a, grad_outputs=(v1, v2))の計算  
--> (∂y1/∂a*v1 + ∂y2/∂a*v2, )  
-つまり, autograd.grad(y1*v1 + y2*v2, a, grad_outputs=None)と同じ
+-> (∂y1/∂a * v1 + ∂y2/∂a * v2, )  
+つまり, autograd.grad(y1 * v1 + y2 * v2, a, grad_outputs=None)と同じ
 
 ```python
 y_grad = torch.autograd.grad((y, y2), a, grad_outputs=(torch.tensor(2), torch.tensor(3)))
@@ -102,7 +102,7 @@ print(y_grad)
 
 ### case 2-2-2. outputs: scalars. inputs: tensors. grad_outputs: scalars (with the same shape and the same number of tensor or scalar as outputs).
 autograd.grad((y1, y2), (a1, a2), grad_outputs=(v1, v2))の計算  
--> (∂y1/∂a1*v1 + ∂y2/∂a1*v2, ∂y1/∂a2*v1 + ∂y2/∂a2*v2)
+-> (∂y1/∂a1 * v1 + ∂y2/∂a1 * v2, ∂y1/∂a2 * v1 + ∂y2/∂a2 * v2)
 
 ```python
 y_grad = torch.autograd.grad((y, y2), (a, b), grad_outputs=(torch.tensor(2), torch.tensor(3)))
